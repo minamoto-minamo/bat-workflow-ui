@@ -1,0 +1,12 @@
+common:
+  title: "Bat Workflow Scheduler"
+
+page:
+  base:
+    right:
+      start: 600
+      max: 1400
+      min: 240
+    pagination:
+      per-page: 3
+  

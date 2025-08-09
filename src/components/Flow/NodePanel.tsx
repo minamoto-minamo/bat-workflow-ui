@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 const NodePanel: React.FC = () => {
 	const onDragStart = (event: React.DragEvent, nodeType: string) => {
-		event.dataTransfer.setData('application/reactflow', nodeType);
-		event.dataTransfer.effectAllowed = 'move';
-	};
+		event.dataTransfer.setData('application/reactflow', nodeType)
+		event.dataTransfer.effectAllowed = 'move'
+	}
 
 	return (
 		<div>
@@ -17,7 +17,7 @@ const NodePanel: React.FC = () => {
 				バッチステップ
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default NodePanel;
+export default NodePanel

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 import ReactFlow, {
 	addEdge,
 	Background,
@@ -9,36 +9,36 @@ import ReactFlow, {
 	type Edge,
 	type Node,
 	type Connection, // ✅ 型だけ明示
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from 'reactflow'
+import 'reactflow/dist/style.css'
 
 const FlowCanvas: React.FC = () => {
-	const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>([]);
-	const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>([]);
+	const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>([])
+	const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>([])
 
 	const onConnect = useCallback(
 		(params: Edge | Connection) => {
-			setEdges((eds) => addEdge(params, eds));
+			setEdges((eds) => addEdge(params, eds))
 		},
 		[setEdges]
-	);
+	)
 
 	const onDrop = useCallback(
 		(event: React.DragEvent) => {
-			event.preventDefault();
+			event.preventDefault()
 
-			const type = event.dataTransfer.getData('application/reactflow');
-			const position = { x: event.clientX - 300, y: event.clientY }; // 左パネルを想定して補正
+			const type = event.dataTransfer.getData('application/reactflow')
+			const position = { x: event.clientX - 300, y: event.clientY } // 左パネルを想定して補正
 			const newNode: Node = {
 				id: `${Date.now()}`,
 				type,
 				position,
 				data: { label: `新しいステップ` },
-			};
-			setNodes((nds) => nds.concat(newNode));
+			}
+			setNodes((nds) => nds.concat(newNode))
 		},
 		[setNodes]
-	);
+	)
 
 	return (
 		<div
@@ -59,7 +59,7 @@ const FlowCanvas: React.FC = () => {
 				<Background />
 			</ReactFlow>
 		</div>
-	);
-};
+	)
+}
 
-export default FlowCanvas;
+export default FlowCanvas

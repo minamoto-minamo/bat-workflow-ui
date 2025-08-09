@@ -1,12 +1,12 @@
 // components/SidebarMenu.tsx
-import { Home, List, Play, BarChart, Workflow } from 'lucide-react';
-import NavItem from './MenuItem';
+import { Home, List, Play, BarChart, Workflow } from 'lucide-react'
+import NavItem from './MenuItem'
 
-type Page = 'home' | 'step' | 'flow' | 'control' | 'log';
+type Page = 'home' | 'step' | 'flow' | 'control' | 'log'
 
 interface SidebarMenuProps {
-	selectedPage: Page;
-	onSelectPage: (page: Page) => void;
+	selectedPage: Page
+	onSelectPage: (page: Page) => void
 }
 
 export default function SidebarMenu({ selectedPage, onSelectPage }: SidebarMenuProps) {
@@ -23,5 +23,5 @@ export default function SidebarMenu({ selectedPage, onSelectPage }: SidebarMenuP
 				<NavItem icon={BarChart} label="統計・ログ閲覧" selected={selectedPage === 'log'} onClick={() => onSelectPage('log')} />
 			</nav>
 		</div>
-	);
+	)
 }

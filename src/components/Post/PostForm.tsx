@@ -1,40 +1,39 @@
-// components/PostForm.tsx
-import { useEffect, useState } from "react";
-import type { Post } from "./PostList";
+import { useEffect, useState } from "react"
+import type { Post } from "@/types/Post"
 
 interface PostFormProps {
-	post: Post | null;
-	onSave: (post: Omit<Post, "id" | "createdAt">, id?: number) => void;
-	onDelete?: (id: number) => void;
-	onClose: () => void;
+	post: Post | null
+	onSave: (post: Omit<Post, "id" | "updatedAt">, id?: number) => void
+	onDelete?: (id: number) => void
+	onClose: () => void
 }
 
 export default function PostForm({ post, onSave, onDelete, onClose }: PostFormProps) {
-	const [name, setName] = useState("");
-	const [content, setContent] = useState("");
+	const [title, setName] = useState("")
+	const [content, setContent] = useState("")
 
 	useEffect(() => {
-		setName(post?.title ?? "");
-		setContent(post?.content ?? "");
-	}, [post]);
+		setName(post?.title ?? "")
+		setContent(post?.content ?? "")
+	}, [post])
 
 	const handleSubmit = () => {
-		if (!name.trim() || !content.trim()) {
-			alert("名前と本文は必須です。");
-			return;
+		if (!title.trim() || !content.trim()) {
+			alert("名前と本文は必須です。")
+			return
 		}
-		onSave({ title: name, content }, post?.id);
-	};
+		onSave({ title, content }, post?.id)
+	}
 
 	const handleDelete = () => {
 		if (post?.id && confirm("本当に削除しますか？")) {
-			onDelete?.(post.id);
+			onDelete?.(post.id)
 		}
-	};
+	}
 
 	return (
 		<div className="space-y-4 text-sm text-gray-800">
-			<h3 className="text-xl font-bold">
+			<h3 className="text-xl font-bold mx-auto">
 				{post ? "投稿を編集" : "新規投稿"}
 			</h3>
 
@@ -42,7 +41,7 @@ export default function PostForm({ post, onSave, onDelete, onClose }: PostFormPr
 				<label className="block font-semibold mb-1">タイトル</label>
 				<input
 					className="w-full border border-gray-400 px-2 py-1 rounded"
-					value={name}
+					value={title}
 					onChange={(e) => setName(e.target.value)}
 				/>
 			</div>
@@ -71,5 +70,5 @@ export default function PostForm({ post, onSave, onDelete, onClose }: PostFormPr
 				)}
 			</div>
 		</div>
-	);
+	)
 }

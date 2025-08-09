@@ -1,11 +1,11 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react'
 
 type NavItemProps = {
-	icon: LucideIcon;
-	label: string;
-	selected?: boolean;
-	onClick: () => void;
-};
+	icon: LucideIcon
+	label: string
+	selected?: boolean
+	onClick: () => void
+}
 
 export default function NavItem({ icon: Icon, label, selected, onClick }: NavItemProps) {
 	return (
@@ -17,5 +17,5 @@ export default function NavItem({ icon: Icon, label, selected, onClick }: NavIte
 			<Icon className="w-5 h-5" size={18} />
 			<span className="ml-2 hidden lg:inline-block whitespace-nowrap">{label}</span>
 		</button>
-	);
+	)
 }

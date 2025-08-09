@@ -1,6 +1,6 @@
-import React from 'react';
-import FlowCanvas from '@/components/Flow/FlowCanvas';
-import NodePanel from '@/components/Flow/NodePanel';
+import React from 'react'
+import FlowCanvas from '@/components/Flow/FlowCanvas'
+import NodePanel from '@/components/Flow/NodePanel'
 
 
 const FlowBuilderPage: React.FC = () => {
@@ -13,7 +13,7 @@ const FlowBuilderPage: React.FC = () => {
 				<FlowCanvas />
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default FlowBuilderPage;
+export default FlowBuilderPage

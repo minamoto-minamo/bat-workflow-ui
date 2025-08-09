@@ -1,42 +1,41 @@
-// components/Step/StepForm.tsx
-import { useEffect, useState } from "react";
-import type { Step } from "@/types/Step";
+import { useEffect, useState } from "react"
+import type { Step } from "@/types/Step"
 
 interface StepFormProps {
-	step: Step | null;
-	onSave: (step: Omit<Step, "id">, id?: number) => void;
-	onDelete?: (id: number) => void;
-	onClose: () => void;
+	step: Step | null
+	onSave: (step: Omit<Step, "id">, id?: number) => void
+	onDelete?: (id: number) => void
+	onClose: () => void
 }
 
 export default function StepForm({ step, onSave, onDelete, onClose }: StepFormProps) {
-	const [name, setName] = useState("");
-	const [batPath, setBatPath] = useState("");
-	const [memo, setMemo] = useState("");
+	const [name, setName] = useState("")
+	const [batPath, setBatPath] = useState("")
+	const [memo, setMemo] = useState("")
 
 	useEffect(() => {
-		setName(step?.name || "");
-		setBatPath(step?.batPath || "");
-		setMemo(step?.memo || "");
-	}, [step]);
+		setName(step?.name || "")
+		setBatPath(step?.batPath || "")
+		setMemo(step?.memo || "")
+	}, [step])
 
 	const handleSubmit = () => {
-		if (!name || !batPath) {
-			alert("ステップ名とbatパスは必須です。");
-			return;
+		if (!name.trim() || !batPath.trim()) {
+			alert("ステップ名とbatパスは必須です。")
+			return
 		}
-		onSave({ name, batPath, memo }, step?.id);
-	};
+		onSave({ name, batPath, memo }, step?.id)
+	}
 
 	const handleDelete = () => {
-		if (step?.id && onDelete && confirm("削除してもよろしいですか？")) {
-			onDelete(step.id);
+		if (step?.id && onDelete && confirm("本当に削除しますか？")) {
+			onDelete(step.id)
 		}
-	};
+	}
 
 	return (
 		<div className="space-y-4 text-sm text-gray-800">
-			<h3 className="text-xl font-bold text-black mx-auto">
+			<h3 className="text-xl font-bold mx-auto">
 				{step ? "ステップ編集" : "新規ステップ作成"}
 			</h3>
 
@@ -84,5 +83,5 @@ export default function StepForm({ step, onSave, onDelete, onClose }: StepFormPr
 			</div>
 
 		</div>
-	);
+	)
 }
