@@ -1,12 +1,26 @@
 common:
-  title: "Bat Workflow Scheduler"
+  title: 'Bat Workflow Scheduler'
 
 page:
   base:
     right:
       start: 600
-      max: 1400
+      max: 1800
       min: 240
     pagination:
-      per-page: 3
+      per-page: 15
+  post :
+    title : 投稿
+    add-button : 新規投稿
+    item-name : 投稿
+  step :
+    title : ステップ設定
+    add-button : ステップ
+    item-name : ステップ
+  flow :
+    title : ワークフロー構築
+    add-button : ワークフロー
+    item-name : ワークフロー
+
+
   

@@ -1,15 +1,15 @@
-// src/pages/PostCommentPage.tsx
-import { useCrud } from "@/hooks/useCrud"
-import { useRightPanel } from "@/hooks/useRightPanel"
-import type { Post } from "@/types/Post"
-import PostForm from "@/components/Post/PostForm"
-import PostList from "@/components/Post/PostList"
-import MasterDetailPage from "@/pages/MasterDetailPage"
+import { useCrud } from '@/hooks/useCrud'
+import { useRightPanel } from '@/hooks/useRightPanel'
+import type { Post } from '@/types/pages/Post'
+import PostForm from '@/components/pages/post/PostForm'
+import PostList from '@/components/pages/post/PostList'
+import MasterDetailPage from '@/pages/MasterDetailPage'
+import { CONFIG } from '@/config'
 
 interface Props { setRightPanel: (content: React.ReactNode) => void }
 
 export default function PostCommentPage({ setRightPanel }: Props) {
-	const { items: posts, save, remove } = useCrud<Post>("/api/post")
+	const { items: posts, save, remove } = useCrud<Post>('/api/post')
 	const { open, close } = useRightPanel(setRightPanel)
 
 	const openForm = (post: Post | null) => {
@@ -25,13 +25,13 @@ export default function PostCommentPage({ setRightPanel }: Props) {
 
 	return (
 		<MasterDetailPage<Post>
-			title="投稿一覧"
+			title={CONFIG['page.post.title']}
 			items={posts}
 			onOpenForm={openForm}
 			ListComponent={({ items, onEdit }) => (
 				<PostList posts={items} onEdit={onEdit} />
 			)}
-			onCreateLabel="＋ 投稿"
+			onCreateLabel={CONFIG['page.post.add-button']}
 		/>
 	)
 }

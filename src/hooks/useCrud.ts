@@ -1,10 +1,9 @@
-// src/hooks/useCrud.ts
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 export type HasId = { id: number }
 
 export function useCrud<T extends HasId>(
-    resourcePath: string, // 例: "/api/post" | "/api/step"
+    resourcePath: string, // 例: '/api/post' | '/api/step'
     sortBy: (a: T, b: T) => number = (a, b) => a.id - b.id
 ) {
     const [items, setItems] = useState<T[]>([])
@@ -17,8 +16,8 @@ export function useCrud<T extends HasId>(
 
     const save = async <U extends Partial<T>>(payload: U, id?: number) => {
         const res = await fetch(id ? `${resourcePath}/${id}` : resourcePath, {
-            method: id ? "PUT" : "POST",
-            headers: { "Content-Type": "application/json" },
+            method: id ? 'PUT' : 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         })
         const saved: T = await res.json()
@@ -27,7 +26,7 @@ export function useCrud<T extends HasId>(
     }
 
     const remove = async (id: number) => {
-        await fetch(`${resourcePath}/${id}`, { method: "DELETE" })
+        await fetch(`${resourcePath}/${id}`, { method: 'DELETE' })
         setItems(prev => prev.filter(x => x.id !== id))
     }
 

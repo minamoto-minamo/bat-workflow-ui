@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState } from 'react'
+import { CONFIG } from '@/config'
 
-export function usePagination<T>(items: T[], perPage = 10) {
+export function usePagination<T>(items: T[], perPage = CONFIG['page.base.pagination.per-page']) {
     const [page, setPage] = useState(1)
 
     const totalPages = Math.max(1, Math.ceil(items.length / perPage))

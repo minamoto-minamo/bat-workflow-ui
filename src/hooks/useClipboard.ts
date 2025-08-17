@@ -1,20 +1,20 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export function useClipboard(timeout = 1000) {
     const [copiedKey, setCopiedKey] = useState<string | null>(null)
 
     const copy = async (text: string, key?: string) => {
         try {
-            if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-                await navigator.clipboard.writeText(text ?? "")
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                await navigator.clipboard.writeText(text ?? '')
             } else {
-                const ta = document.createElement("textarea")
-                ta.value = text ?? ""
-                ta.style.position = "fixed"
-                ta.style.opacity = "0"
+                const ta = document.createElement('textarea')
+                ta.value = text ?? ''
+                ta.style.position = 'fixed'
+                ta.style.opacity = '0'
                 document.body.appendChild(ta)
                 ta.select()
-                document.execCommand("copy")
+                document.execCommand('copy')
                 document.body.removeChild(ta)
             }
             if (key) {
@@ -22,7 +22,7 @@ export function useClipboard(timeout = 1000) {
                 setTimeout(() => setCopiedKey(null), timeout)
             }
         } catch (e) {
-            console.error("コピー失敗:", e)
+            console.error('コピー失敗:', e)
         }
     }
 
