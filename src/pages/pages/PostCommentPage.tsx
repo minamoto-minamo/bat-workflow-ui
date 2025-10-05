@@ -9,7 +9,9 @@ import { CONFIG } from '@/config'
 interface Props { setRightPanel: (content: React.ReactNode) => void }
 
 export default function PostCommentPage({ setRightPanel }: Props) {
-	const { items: posts, save, remove } = useCrud<Post>('/api/post')
+	const { items: posts, save, remove } = useCrud<Post>('/api/post',
+		(a, b) => b.updatedAt.localeCompare(a.updatedAt)
+	)
 	const { open, close } = useRightPanel(setRightPanel)
 
 	const openForm = (post: Post | null) => {

@@ -187,13 +187,7 @@ const NodeSettings: FC<Props> = ({
             <div>
                 <h4 className="font-semibold mb-3">ステップ情報</h4>
                 <div className="grid grid-cols-2 gap-3">
-                    <div>
-                        <label className="block text-xs mb-1">ステップID</label>
-                        <div className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 border truncate">
-                            {selectedNode.data.stepId}
-                        </div>
-                    </div>
-                    <div>
+                    <div className="col-span-2">
                         <label className="block text-xs mb-1">ステップ名</label>
                         <div className="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 border truncate">
                             {selectedStep?.name ?? "(未取得)"}

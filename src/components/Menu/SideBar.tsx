@@ -1,8 +1,7 @@
 // components/SidebarMenu.tsx
 import { Home, List, Play, BarChart, Workflow } from 'lucide-react'
 import NavItem from './MenuItem'
-
-type Page = 'home' | 'step' | 'flow' | 'control' | 'log'
+import { type Page } from '@/types/Page'
 
 interface SidebarMenuProps {
 	selectedPage: Page
@@ -16,7 +15,7 @@ export default function SidebarMenu({ selectedPage, onSelectPage }: SidebarMenuP
 				Bat Workflow Scheduler
 			</h1>
 			<nav className='flex flex-col items-center gap-2 text-sm'>
-				<NavItem icon={Home} label='ホーム' selected={selectedPage === 'home'} onClick={() => onSelectPage('home')} />
+				<NavItem icon={Home} label='ホーム' selected={selectedPage === 'post'} onClick={() => onSelectPage('post')} />
 				<NavItem icon={List} label='ステップ定義' selected={selectedPage === 'step'} onClick={() => onSelectPage('step')} />
 				<NavItem icon={Workflow} label='フロー構築' selected={selectedPage === 'flow'} onClick={() => onSelectPage('flow')} />
 				<NavItem icon={Play} label='実行制御' selected={selectedPage === 'control'} onClick={() => onSelectPage('control')} />

@@ -5,13 +5,11 @@ import PostCommentPage from '@/pages/pages/PostCommentPage';
 import FlowConfigPage from '@/pages/pages/FlowConfigPage';
 import StepConfigPage from '@/pages/pages/StepConfigPage';
 import { CONFIG } from '@/config'
+import { type Page } from '@/types/Page';
 
-
-
-type Page = 'home' | 'step' | 'flow' | 'control' | 'log'
 
 export default function PageBase() {
-	const [selectedPage, setSelectedPage] = useState<Page>('home')
+	const [selectedPage, setSelectedPage] = useState<Page>("post")
 	const [rightPanelContent, setRightPanelContent] = useState<ReactNode>(null)
 	const [rightPanelWidth, setRightPanelWidth] = useState(CONFIG['page.base.right.start'])
 	const isResizing = useRef(false)
@@ -48,7 +46,7 @@ export default function PageBase() {
 
 	const renderContent = () => {
 		switch (selectedPage) {
-			case 'home':
+			case 'post':
 				return <PostCommentPage setRightPanel={setRightPanelContent} />
 			case 'step':
 				return <StepConfigPage setRightPanel={setRightPanelContent} />

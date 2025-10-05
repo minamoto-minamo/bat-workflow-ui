@@ -26,7 +26,7 @@ export default function PostList({ posts, onEdit }: PostListProps) {
 				>
 					<div className='flex justify-between items-center text-sm text-gray-600'>
 						<span className='font-medium'>{post.title}</span>
-						<span className='text-xs'>{formatDateTime(post.updatedAt)}</span>
+						<span className='text-xs'>LastUpdate:{formatDateTime(post.updatedAt)}</span>
 					</div>
 
 					<div className='text-sm text-gray-800 whitespace-pre-wrap leading-relaxed pl-4'>
