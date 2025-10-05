@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Post } from '@/types/Post'
+import type { Post } from '@/types/pages/Post'
 
 interface PostFormProps {
 	post: Post | null
